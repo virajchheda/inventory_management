@@ -18,8 +18,8 @@
         %td= link_to product.sku_code, edit_product_path(product), method: :get
         %td= product.name
         %td= product.price
-        - @warehouses.each do |warehouse|
-          - inv = warehouse.inventories.where(product: product).last
+        - product.inventories.order_by_warehouse.each do |inv|
+          / # - inv = warehouse.inventories.where(product: product).last
           - if inv.item_count <= inv.low_item_threshold
             %td.bg-danger
               = inv.item_count
@@ -30,3 +30,4 @@
               = inv.item_count
               | 
               = inv.low_item_threshold
+=will_paginate @products
