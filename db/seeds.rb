@@ -22,9 +22,6 @@ end
   wh.pincode = w[:pincode]
   wh.max_capactity = rand(500..1000)
   wh.save!
-  Product.all.each do |p|
-    p.inventories.create!(low_item_threshold: rand(5..10), warehouse: wh)
-  end
 end
 
 #for mumbai

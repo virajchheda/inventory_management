@@ -14,7 +14,7 @@
   %tbody
     - @products.each do |product|
       %tr
-        %td= link_to product.sku_code, edit_product_path(product)
+        %td= link_to product.sku_code, edit_product_path(product), method: :get
         %td= product.name
         %td= product.price
         - @warehouses.each do |warehouse|
