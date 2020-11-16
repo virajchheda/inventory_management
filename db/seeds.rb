@@ -27,7 +27,7 @@ end
 #for mumbai
 wh = Warehouse.find_by_name("Mumbai")
 wh.inventories.each do  |inv|
-  inv.item_count = rand((inv.low_item_threshold + 1) ..15)
+  inv.item_count = rand((inv.low_item_threshold + 1)..15)
   inv.save!
 end
 
@@ -41,8 +41,9 @@ end
     if i <= w[:count]
       inv.item_count = rand(0..inv.low_item_threshold - 1)
     else
-      inv.item_count = rand((inv.low_item_threshold + 1) ..15)
+      inv.item_count = rand((inv.low_item_threshold + 1)..15)
     end
+    i+=1
     inv.save!
   end
 end
