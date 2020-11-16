@@ -1,0 +1,15 @@
+%p
+  %strong Wh code:
+  = @warehouse.wh_code
+%p
+  %strong Name:
+  = @warehouse.name
+%p
+  %strong Pincode:
+  = @warehouse.pincode
+%p
+  %strong Max capactity:
+  = @warehouse.max_capactity
+= link_to 'Edit', edit_warehouse_path(@warehouse)
+|
+= link_to 'Back', warehouses_path

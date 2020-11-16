@@ -1,0 +1,11 @@
+$("#update-message").removeClass("hide");
+
+$("#update-message").text('');
+
+- if @inventory.errors.any? 
+  - @inventory.errors.each do |key, value|
+    $("#update-message").append("<div class='notice'> This #{key.to_s.titleize} #{escape_javascript(value)}");
+    $("#update-message").css("color","red");
+- else
+  $("#update-message").append("<div class='notice'> Inventory updated successfully!");
+  $("#update-message").css("color","green");

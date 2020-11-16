@@ -1,0 +1,31 @@
+%h3 Products
+%p.text-danger
+  *note: warehouse values are in format (Item Count | Threshold)
+%table.table.table-hover
+  %thead
+    %tr.table-success
+      %th.w-10 SKU
+      %th.w-30 NAME
+      %th.w-20 PRICE
+      - @warehouses.each  do |w|
+        %th.w-30
+          = w.name
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= link_to product.sku_code, edit_product_path(product)
+        %td= product.name
+        %td= product.price
+        - @warehouses.each do |warehouse|
+          - inv = warehouse.inventories.where(product: product).last
+          - if inv.item_count <= inv.low_item_threshold
+            %td.bg-danger
+              = inv.item_count
+              | 
+              = inv.low_item_threshold
+          -else
+            %td
+              = inv.item_count
+              | 
+              = inv.low_item_threshold

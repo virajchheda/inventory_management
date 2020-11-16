@@ -1,0 +1,16 @@
+%h3 Inventory
+%table.table.table-hover
+  %thead
+    %tr.table-success
+      %th.w-10 Product
+      %th.w-30 WH
+      %th.w-20 Item
+      %th.w-20 Threshold
+
+  %tbody
+    - @inventories.each do |inv|
+      %tr
+        %td= inv.product_id
+        %td= inv.warehouse_id
+        %td= inv.item_count
+        %td= inv.low_item_threshold

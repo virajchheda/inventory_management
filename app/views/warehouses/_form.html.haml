@@ -1,0 +1,23 @@
+= form_with(model: warehouse, local: true) do |form|
+  - if warehouse.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(warehouse.errors.count, "error")
+        prohibited this warehouse from being saved:
+      %ul
+        - warehouse.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :wh_code
+    = form.text_field :wh_code
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :pincode
+    = form.text_field :pincode
+  .field
+    = form.label :max_capactity
+    = form.number_field :max_capactity
+  .actions
+    = form.submit

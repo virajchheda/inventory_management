@@ -1,0 +1,37 @@
+%h3 View Product
+.row
+  = form_for @product  do |f|
+    .form        
+      .field.form-group
+        = f.label :SKU_CODE
+        = f.text_field :sku_code,class: "form-control", readonly: true
+
+      .field.form-group
+        = f.label :name
+        = f.text_field :name, class: "form-control", readonly: true
+
+      .field.form-group
+        = f.label :price
+        = f.text_field :price, class: "form-control", readonly: true
+
+      / .actions
+      /   = f.submit 'Save', class: 'btn btn-primary form-control'
+  / .col
+#update-message.text-center.hide
+%table.table.table-borderless
+  %thead
+    %tr
+      %th WH name
+      %th Item Count
+      %th Threshold
+      %th Action
+
+  %tbody
+  - @product.inventories.sort_by(&:warehouse_id).each do |inv|
+    %tr
+    = form_for inv, remote: true  do |f|
+      %td= f.label :warehouse_name, inv.warehouse.name
+      %td= f.text_field :item_count, class: "form-control", required: true
+      %td= f.text_field :low_item_threshold , class: "form-control", required: true
+      %td= f.submit 'Update', class: 'btn btn-primary form-control'
+
