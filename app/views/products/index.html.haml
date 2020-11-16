@@ -1,3 +1,4 @@
+=link_to 'Warehouse', warehouses_path, class: "btn btn-primary"
 %h3 Products
 %p.text-danger
   *note: warehouse values are in format (Item Count | Threshold)
@@ -14,7 +15,7 @@
   %tbody
     - @products.each do |product|
       %tr
-        %td= link_to product.sku_code, edit_product_path(product)
+        %td= link_to product.sku_code, edit_product_path(product), method: :get
         %td= product.name
         %td= product.price
         - @warehouses.each do |warehouse|

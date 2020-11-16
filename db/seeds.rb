@@ -22,15 +22,12 @@ end
   wh.pincode = w[:pincode]
   wh.max_capactity = rand(500..1000)
   wh.save!
-  Product.all.each do |p|
-    p.inventories.create!(low_item_threshold: rand(5..10), warehouse: wh)
-  end
 end
 
 #for mumbai
 wh = Warehouse.find_by_name("Mumbai")
 wh.inventories.each do  |inv|
-  inv.item_count = rand((inv.low_item_threshold + 1) ..15)
+  inv.item_count = rand((inv.low_item_threshold + 1)..15)
   inv.save!
 end
 
@@ -44,8 +41,9 @@ end
     if i <= w[:count]
       inv.item_count = rand(0..inv.low_item_threshold - 1)
     else
-      inv.item_count = rand((inv.low_item_threshold + 1) ..15)
+      inv.item_count = rand((inv.low_item_threshold + 1)..15)
     end
+    i+=1
     inv.save!
   end
 end

@@ -1,3 +1,4 @@
+=link_to 'Warehouse', warehouses_path, class: "btn btn-primary"
 %h3 View Product
 .row
   = form_for @product  do |f|
@@ -34,4 +35,6 @@
       %td= f.text_field :item_count, class: "form-control", required: true
       %td= f.text_field :low_item_threshold , class: "form-control", required: true
       %td= f.submit 'Update', class: 'btn btn-primary form-control'
+
+= link_to 'Back', products_path
 
