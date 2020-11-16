@@ -3,8 +3,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit]
   
   def index
-    @products = Product.all.includes(:inventories)
-    @warehouses = Warehouse.all.includes(:inventories)
+    @products = Product.paginate(:page=>params[:page], per_page: 20).includes(inventories: :warehouse)
+    @warehouses = Warehouse.all
   end
 
   def edit
@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   private
 
   def set_product 
-    @product = Product.find_by_id(params[:id])
+    @product = Product.includes(inventories: :warehouse).find_by_id(params[:id])
   end
 
 end
