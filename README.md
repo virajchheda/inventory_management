@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Heroku Application Link: https://demo-inventory-mgnt.herokuapp.com
 
-Things you may want to cover:
+# Configuration
 
-* Ruby version
+* Ruby version - 2.6.3 
 
-* System dependencies
+* Rails - 6.0.3.4
 
-* Configuration
+* Database - Postgresql
 
-* Database creation
+* Database creation 
+```rails db:create```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Database initialization - 
+```rails db:seed``` (to seed data from db/seeds.rb file)
